@@ -1,2 +1,2 @@
-# linuxRice
-my personal rice of linux
+# Linux Rice
+My personal Linux configs for easy archiving and backup.
