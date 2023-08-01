@@ -39,7 +39,7 @@ modulefg = #A9B9CC
 moduleul = #192D43
 
 ;---------------------------------------
-;       LAPTOP MONITOR
+;       MAIN DISPLAY
 ;---------------------------------------
 
 [bar/nord]
@@ -56,41 +56,41 @@ padding-left = 0
 padding-right = 0
 module-margin-left = 0
 module-margin-right = 1
-monitor = eDP-1
+monitor = DP-4
 
 modules-left = i3
-modules-right = cpu memory backlight pulseaudio network battery date
+modules-right = cpu memory pulseaudio network date
 modules-center = xwindow
 
 wm-restack = i3
 
-font-0 = FuraCode Nerd Font:weight=bold:size=9;2
+font-0 = FiraCode Nerd Font :weight=bold:size=9;2
 
 ;---------------------------------------
-;       EXTERNAL DISPLAY
+;       EXTENDED DISPLAY
 ;---------------------------------------
 
-[bar/nord-ext]
-width = 100%
-height = 30
-bottom = false
-border-size = 0
-background = ${colors.barcolor}
-foreground = ${colors.black}
-fixed-center = true
-line-size = 4
-line-color = #f00
-padding-left = 0
-padding-right = 0
-module-margin-left = 0
-module-margin-right = 1
-monitor = DP-1-2
+; [bar/nord-ext]
+; width = 100%
+; height = 30
+; bottom = false
+; border-size = 0
+; background = ${colors.barcolor}
+; foreground = ${colors.black}
+; fixed-center = true
+; line-size = 4
+; line-color = #f00
+; padding-left = 0
+; padding-right = 0
+; module-margin-left = 0
+; module-margin-right = 1
+; monitor = DP-1-2
 
-modules-left = i3
-modules-right = cpu memory pulseaudio network battery date
-modules-center = xwindow
+; modules-left = i3
+; modules-right = cpu memory pulseaudio network date
+; modules-center = xwindow
 
-font-0 = FuraCode Nerd Font:weight=bold:size=9;2
+; font-0 = FiraCode Nerd Font:weight=bold:size=9;2
 
 ;---------------------------------------
 ;	     MEMORY
@@ -101,7 +101,7 @@ type = internal/memory
 ; Default: 1
 interval = 3
 format = <label>
-label = "%{A1:exec termite -e htop:} %{F#70AD37}%{F-} %{F#A9B9CC}%gb_used%%{F-} %{A}" 
+label = " %{F#70AD37}󰍛%{F-}  %{F#A9B9CC}%gb_used%%{F-} " 
 format-foreground = ${colors.modulefg}
 format-background = ${colors.modulebg}
 format-underline = ${colors.moduleul}
@@ -111,7 +111,7 @@ format-underline = ${colors.moduleul}
 ;---------------------------------------
 [module/network]
 type = internal/network
-interface = wlp3s0
+interface = wlan0
 interval = 3.0
 ;ping-interval = 3
 udspeed-minwidth = 5
@@ -126,13 +126,13 @@ format-connected-underline = ${colors.moduleul}
 format-disconnected-underline = ${colors.moduleul}
 format-packetloss-underline = ${colors.moduleul}
 
-label-connected = "%{A1:exec urxvt -e nmtui:} %{F#56A4BA}%{F-} %{F#A9B9CC}%essid%%{F-} %{A}"
+label-connected = " %{F#56A4BA}%{F-}  %{F#A9B9CC}%essid%%{F-} "
 label-connected-foreground = ${colors.modulefg}
 
-label-disconnected = "%{A1:exec urxvt -e nmtui:} %{F#BF3B48}睊%{F-} %{F#A9B9CC}No Connection%{F-} %{A}"
+label-disconnected = " %{F#BF3B48}睊%{F-}  %{F#A9B9CC}No Connection%{F-} "
 label-disconnected-foreground = ${colors.modulefg}
 
-label-packetloss = "%{A1:exec urxvt -e nmtui:} %{F#CF9B36}⚠%{F-} %{F#A9B9CC}%essid%%{F-} %{A}"
+label-packetloss = " %{F#CF9B36}⚠%{F-}  %{F#A9B9CC}%essid%%{F-} "
 label-packetloss-foreground = ${colors.modulefg}
 
 ;---------------------------------------
@@ -142,7 +142,7 @@ label-packetloss-foreground = ${colors.modulefg}
 type = internal/cpu 
 interval = 2
 format = <label>
-label = "%{A1:exec termite -e htop:}%{F#3C6EAC}%{F-} %{F#A9B9CC}%percentage%%%{F-}%{A}"
+label = "%{F#3C6EAC}%{F-}  %{F#A9B9CC}%percentage%%%{F-}"
 format-foreground = ${colors.modulefg}
 format-background = ${colors.modulebg}
 format-padding = 1
@@ -222,7 +222,7 @@ type = internal/date
 interval = 1
 date = %Y-%m-%d %a
 time = %I:%M %p
-label = "%{F#7e7e7e} %{F-} %{F#A9B9CC}%date% %time%%{F-}  "
+label = " %{F#A9B9CC}%date% %time%%{F-}  "
 format-foreground = ${colors.modulefg}
 format-background = ${colors.modulebg}
 format-underline = ${colors.moduleul}
@@ -238,10 +238,10 @@ interval = 5
 format-volume = <ramp-volume><label-volume>
 format-volume-foreground = ${colors.modulefg}
 format-volume-background = ${colors.modulebg}
-label-volume = "%percentage%% "
+label-volume = " %percentage%% "
 label-volume-foreground = ${colors.modulefg}
 label-volume-background = ${colors.modulebg}
-label-muted = " 婢 %{F#A9B9CC}0%%{F-} "
+label-muted = " 󰖁  %{F#A9B9CC}0%%{F-} "
 label-muted-foreground = ${colors.purple1}
 label-muted-background = ${colors.modulebg}
 ramp-volume-0 = "  "
@@ -258,45 +258,3 @@ ramp-volume-3-foreground = ${colors.purple1}
 ramp-volume-3-background = ${colors.modulebg}
 format-volume-underline = ${colors.moduleul}
 format-muted-underline = ${colors.moduleul}
-;---------------------------------------
-;	   BATTERY
-;---------------------------------------
-
-[module/battery]
-type = internal/battery
-full-at = 99
-battery = BAT1
-adapter = ADP1
-poll-interval = 5
-time-format = %H:%M
-format-charging = "%{A1:exec termite -e 'sudo powertop':}%{F#70AD37} <animation-charging>%{F-} <label-charging>%{A}"
-format-discharging = "%{A1:exec termite -e 'sudo powertop --auto-tune':}%{F#70AD37} <ramp-capacity>%{F-} <label-discharging>%{A}"
-format-full = "%{A1:exec termite -e 'sudo powertop':}%{F#70AD37} <ramp-capacity>%{F-} <label-full>%{A}"
-
-format-charging-underline = ${colors.moduleul}
-format-discharging-underline = ${colors.moduleul}
-format-full-underline = ${colors.moduleul}
-
-label-charging = "%percentage%%"
-label-discharging = "%percentage%%"
-label-full = "%percentage%% "
-
-label-charging-foreground = ${colors.modulefg}
-label-discharging-foreground = ${colors.modulefg}
-label-full-foreground = ${colors.modulefg}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-bar-capacity-width = 10
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-
-animation-charging-framerate = 750
